@@ -11,22 +11,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # For dynamic host file updates
     # run: vagrant install vagrant-hostupdater
     config.vm.network :private_network, ip: "192.168.3.10"
-    config.vm.network :forwarded_port, guest: 80, host: 54444
+    config.vm.network :forwarded_port, guest: 80, host: 1776, auto_correct: true
     config.vm.hostname = "webserver"
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    end 
   end
 
   config.vm.define "database" do |database|
     config.vm.network :private_network, ip: "192.168.3.11"
-    config.vm.network :forwarded_port, guest: 5432, host: 54320
+    config.vm.network :forwarded_port, guest: 5432, host: 54320, auto_correct: true
     config.vm.hostname = "database"
+    config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    end 
   end
 
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-  end 
-  
-  config.vm.provider "virtualbox" do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
-  end
-  
 end

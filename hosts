@@ -1,0 +1,9 @@
+[webservers:children]
+dev-webserver
+
+[databases:children]
+dev-database
+
+[dev]
+webserver nickname=dev-webserver branch=master dev=True remote_user=vagrant
+database nickname=dev-database branch=master dev=True remote_user=vagrant
