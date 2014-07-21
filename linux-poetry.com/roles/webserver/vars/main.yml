@@ -9,12 +9,9 @@ project_root_static: "{{ project_root_code }}/static"
 system_packages:
   - build-essential
   - git
-  - libevent-dev
-  - libffi-dev
   - python-dev
   - python-setuptools
   - bcrypt
-  - libpq-dev
 python_packages:
   - pip
   - virtualenv

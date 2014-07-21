@@ -1,7 +1,3 @@
-project_root: /var/projects/linuxpoetry
-django_settings_path: poetry/settings
-project_wsgi: poetry.wsgi
-
 # git info
 project_repo: https://github.com/mrrrgn/linuxpoetry.git 
 branch: master
