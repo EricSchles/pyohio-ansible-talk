@@ -8,3 +8,6 @@ branch: master
 
 # nginx server name
 server_name: linux-poetry.com
+
+extra_pip_packages:
+ - psycopg2

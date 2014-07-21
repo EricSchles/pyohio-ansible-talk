@@ -4,11 +4,21 @@
   git: repo={{ project_repo }} 
        dest={{ project_root_code }}
        version={{ branch }}
+
+- name: Compile local_settings.py with db info.
+  template: src=local_settings.py.j2
+            dest="{{ project_root_code }}/{{ django_settings_path }}/local_settings.py"
+  when: has_remote_db
   
 - name: Install requirements to virtual environment.
   pip: requirements="{{ project_root_code }}/requirements.txt"
        virtualenv={{ project_root_venv }}
        
+- name: Install extra pip packages.
+  pip: name={{ item }}
+       virtualenv={{ project_root_venv }}
+  with_items: extra_pip_packages 
+  
 - name: Sync the database and restart the server. 
   django_manage: command=syncdb
                  app_path={{ project_root_code }}
