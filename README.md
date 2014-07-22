@@ -1,7 +1,7 @@
 Ansible Example for PyOhio 2014
 ----------------
 
-<img src="ansible-pyohio.gif"></img>
+<img src=".gif/ansible-pyohio.gif"></img>
 
 ### Scalable Provisioning and Deployment with Ansible
 
