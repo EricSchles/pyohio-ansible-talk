@@ -1,9 +1,9 @@
 Ansible Example for PyOhio 2014
 ----------------
 
-<img src=".gif/ansible-pyohio.gif"></img>
-
 ### Scalable Provisioning and Deployment with Ansible
+
+<img src=".gif/ansible-pyohio.gif"></img>
 
 ### Description
 In this interactive tutorial we'll be using Ansible, the latest DevOps hotness, to provision a server and deploy a commonly configured Django application. Along the way we'll leverage Ansible's features to deploy to IaaS providers and virtual machines; creating identical production and development environments in a DRY way.
