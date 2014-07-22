@@ -33,11 +33,11 @@
         state=directory 
         path={{ project_code_real }}
 
-- name: Create soft link to the current version's code
+- name: Create symlink to the current version's code
   file: state=link
         src={{ project_code_real }}
         dest={{ project_code }}
-  when: create_version_link
+  tags: symlink
 
 - name: Create the venv directory.
   file: group={{ project_name }}
@@ -46,11 +46,11 @@
         state=directory 
         path={{ project_venv_real }}
 
-- name: Create soft link to the current version's venv
+- name: Create symlink to the current version's venv
   file: state=link
         src={{ project_venv_real }}
         dest={{ project_venv }}
-  when: create_version_link
+  tags: symlink
 
 - name: Create the .ssh directory.
   file: group={{ project_name }}
