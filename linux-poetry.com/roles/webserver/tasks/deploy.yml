@@ -2,17 +2,17 @@
   
 - name: Pull sources from the repository.
   git: repo={{ project_repo }} 
-       dest={{ project_root_code }}
+       dest={{ project_code }}
        version={{ branch }}
   
 - name: Install requirements to virtual environment.
-  pip: requirements="{{ project_root_code }}/requirements.txt"
-       virtualenv={{ project_root_venv }}
+  pip: requirements="{{ project_code }}/requirements.txt"
+       virtualenv={{ project_venv }}
        
 - name: Sync the database and restart the server. 
   django_manage: command=syncdb
-                 app_path={{ project_root_code }}
-                 virtualenv={{ project_root_venv }}
+                 app_path={{ project_code }}
+                 virtualenv={{ project_venv }}
   notify: 
     - kill gunicorn
     - restart nginx

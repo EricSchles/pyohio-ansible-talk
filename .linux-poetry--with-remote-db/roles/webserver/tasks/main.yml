@@ -1,6 +1,0 @@
----
-- include: provision.yml
-  when: provision == true
-
-- include: deploy.yml
-  when: deploy == true

@@ -14,12 +14,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     webserver.vm.network :forwarded_port, guest: 80, host: 1776, auto_correct: true
     webserver.vm.hostname = "webserver"
   end
-
-  config.vm.define "database" do |database|
-    database.vm.network :private_network, ip: "192.168.3.20"
-    database.vm.network :forwarded_port, guest: 5432, host: 54320, auto_correct: true
-    database.vm.hostname = "database"
-  end
   
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]

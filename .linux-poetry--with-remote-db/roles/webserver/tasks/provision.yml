@@ -1,5 +1,0 @@
----
-- include: setup_dirs_and_packages.yml
-- include: setup_scripts.yml
-- include: setup_supervisor.yml
-- include: setup_nginx.yml

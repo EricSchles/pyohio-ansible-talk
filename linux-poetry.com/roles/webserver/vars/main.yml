@@ -1,17 +1,14 @@
 ---
 
-project_root_code: "{{ project_root }}/code"
-project_root_scripts: "{{ project_root }}/scripts"
-project_root_home: "{{ project_root }}/home"
-project_root_venv: "{{ project_root }}/env"
-project_root_static: "{{ project_root_code }}/static"
+project_code: "{{ project_root }}/code"
+project_scripts: "{{ project_root }}/scripts"
+project_home: "{{ project_root }}/home"
+project_venv: "{{ project_root }}/env"
+project_static: "{{ project_code }}/static"
 
 system_packages:
-  - build-essential
   - git
-  - python-dev
   - python-setuptools
-  - bcrypt
 python_packages:
   - pip
   - virtualenv
@@ -20,4 +17,5 @@ supervisord_confs:
   - gunicorn.conf
 scripts:
   - start_gunicorn.sh
+files:
   - kill_gunicorn.sh
