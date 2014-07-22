@@ -31,7 +31,26 @@
         owner={{ project_name }} 
         mode=755 
         state=directory 
-        path={{ project_code }}
+        path={{ project_code_real }}
+
+- name: Create soft link to the current version's code
+  file: state=link
+        src={{ project_code_real }}
+        dest={{ project_code }}
+  when: create_version_link
+
+- name: Create the venv directory.
+  file: group={{ project_name }}
+        owner={{ project_name }} 
+        mode=755 
+        state=directory 
+        path={{ project_venv_real }}
+
+- name: Create soft link to the current version's venv
+  file: state=link
+        src={{ project_venv_real }}
+        dest={{ project_venv }}
+  when: create_version_link
 
 - name: Create the .ssh directory.
   file: group={{ project_name }}
