@@ -14,10 +14,7 @@ system_packages:
 python_packages:
   - pip
   - virtualenv
-  - gunicorn
 supervisord_confs:
   - gunicorn.conf
 scripts:
   - start_gunicorn.sh
-files:
-  - kill_gunicorn.sh

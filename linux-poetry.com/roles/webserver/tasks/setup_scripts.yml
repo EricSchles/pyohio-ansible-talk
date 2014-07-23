@@ -12,9 +12,3 @@
             dest="{{ project_scripts }}/{{item}}"
             mode=0744
   with_items: scripts
-
-- name: Copy scripts.
-  copy: src={{ item }}
-        dest="{{ project_scripts }}/{{ item }}"
-        mode=0744
-  with_items: files

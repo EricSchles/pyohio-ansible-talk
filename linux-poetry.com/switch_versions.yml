@@ -13,7 +13,7 @@
     - roles/webserver/defaults/main.yml
     - roles/webserver/vars/main.yml
   tasks:
-    - include: roles/webserver/tasks/setup_dirs_and_packages.yml
+    - include: roles/webserver/tasks/setup_dirs.yml
       notify:
         - reload supervisor
         - restart supervisor

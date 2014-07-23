@@ -4,17 +4,25 @@
   git: repo={{ project_repo }} 
        dest={{ project_code_real }}
        version={{ branch }}
+  tags: git
   
 - name: Install requirements to virtual environment.
   pip: requirements="{{ project_code_real }}/requirements.txt"
        virtualenv={{ project_venv_real }}
+  tags: virtualenv
+
+- name: Recompile the postactivate hook for our virtualenv
+  template: src=postactivate.j2
+            dest="{{ project_venv }}/bin/postactivate"
+  tags: virtualenv
        
 - name: Sync the database and restart the server. 
   django_manage: command=syncdb
                  app_path={{ project_code }}
                  virtualenv={{ project_venv }}
+  tags: django-setup
   notify: 
     - kill gunicorn
-    - restart nginx
     - reload supervisor
     - restart supervisor
+    - restart nginx

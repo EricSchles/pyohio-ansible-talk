@@ -1,5 +1,11 @@
 ---
-- include: setup_dirs_and_packages.yml
+- include: setup_packages.yml
+  tags: packages
+- include: setup_dirs.yml
+  tags: directories
 - include: setup_scripts.yml
+  tags: scripts
 - include: setup_supervisor.yml
+  tags: supervisor
 - include: setup_nginx.yml
+  tags: nginx

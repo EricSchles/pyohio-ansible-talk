@@ -4,6 +4,9 @@
 ##  A simple launcher for gunicorn to be used by supervisord.  
 ####
 
-export PYTHONPATH=$PYTHONPATH:{{ project_code }}
-export DJANGO_SECRET_KEY="{{ django_secret_key }}"
-{{ project_venv }}/bin/gunicorn -w {{ gunicorn_workers }} {{ project_wsgi }}:application -b 0.0.0.0:{{ gunicorn_port }}
+. {{ project_venv }}/bin/activate
+. {{ project_venv }}/bin/postactivate
+
+export PYTHONPATH={{ project_code }}
+
+gunicorn -w {{ gunicorn_workers }} {{ project_wsgi }}:application -b 0.0.0.0:{{ gunicorn_port }}
