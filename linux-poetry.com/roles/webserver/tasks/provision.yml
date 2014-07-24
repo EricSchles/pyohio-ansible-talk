@@ -3,9 +3,7 @@
   tags: packages
 - include: setup_dirs.yml
   tags: directories
-- include: setup_scripts.yml
-  tags: scripts
-- include: setup_supervisor.yml
-  tags: supervisor
+- include: setup_gunicorn.yml
+  tags: gunicorn
 - include: setup_nginx.yml
   tags: nginx

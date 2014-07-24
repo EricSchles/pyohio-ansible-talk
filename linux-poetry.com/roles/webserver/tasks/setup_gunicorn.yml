@@ -1,0 +1,19 @@
+---
+
+- name: Install gunicorn
+  pip: name=gunicorn
+       virtualenv={{ project_venv_real }}
+
+- name: Render the start script.
+  template: src="start_gunicorn.sh.j2" 
+            dest="{{ project_scripts }}/start_gunicorn.sh"
+            mode=0744
+
+- name: Recompile the postactivate hook for our virtualenv
+  template: src=postactivate.j2
+            dest="{{ project_venv_real }}/bin/postactivate"
+
+- name: Install supervisord gunicorn config.
+  template: src=gunicorn.conf.j2
+            dest=/etc/supervisor/conf.d/gunicorn.conf
+  notify: reload supervisor

@@ -3,24 +3,9 @@
 - name: Create the project directory.
   file: state=directory 
         path={{ project_root }}
-        state=directory
-        mode=755
-
-- name: Create user.
-  user: home={{ project_home }}
-        name={{ project_name }}
-        state=present
-
-- name: Set project directory owner
-  file: path={{ project_root }}
-        owner={{ project_name }}
-        group={{ project_name }}
 
 - name: Create the code directory.
-  file: group={{ project_name }}
-        owner={{ project_name }} 
-        mode=755 
-        state=directory 
+  file: state=directory 
         path={{ project_code_real }}
 
 - name: Create symlink to the current version's code
@@ -30,10 +15,7 @@
   tags: symlink
 
 - name: Create the venv directory.
-  file: group={{ project_name }}
-        owner={{ project_name }} 
-        mode=755 
-        state=directory 
+  file: state=directory 
         path={{ project_venv_real }}
 
 - name: Create symlink to the current version's venv
@@ -42,9 +24,18 @@
         dest={{ project_venv }}
   tags: symlink
 
+- name: Create the project script directory
+  file: state=directory
+        path={{ project_scripts }}
+
+- name: Create user.
+  user: home={{ project_home }}
+        name={{ project_name }}
+        state=present
+
 - name: Create the .ssh directory.
-  file: group={{ project_name }}
-        owner={{ project_name }}
-        mode=755 
-        state=directory 
+  file: state=directory 
         path="{{ project_home }}/.ssh/"
+
+- name: Make user the owner of the project directories
+  command: "chown -R {{ project_name }}:{{ project_name }} {{ project_root }}"
