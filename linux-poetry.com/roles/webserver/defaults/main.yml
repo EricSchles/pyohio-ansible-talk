@@ -2,8 +2,7 @@ project_root: "/var/projects/{{ project_name }}"
 project_wsgi: "{{ project_name }}.wsgi"
 
 create_version_link: true  # symlinks are used to point to our current version
-branch: master
-version: "{{ branch }}"
+version: master
 
 django_settings_path: "{{ project_name }}/settings"
 

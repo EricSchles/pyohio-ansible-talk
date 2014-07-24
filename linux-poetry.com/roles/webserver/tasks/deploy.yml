@@ -3,7 +3,7 @@
 - name: Pull sources from the repository.
   git: repo={{ project_repo }} 
        dest={{ project_code_real }}
-       version={{ branch }}
+       version={{ version }}
   tags: git
   
 - name: Install requirements to virtual environment.
