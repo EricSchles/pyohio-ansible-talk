@@ -7,6 +7,8 @@
 - name: Render the start script.
   template: src="start_gunicorn.sh.j2" 
             dest="{{ project_scripts }}/start_gunicorn.sh"
+            owner={{ project_name }}
+            group={{ project_name }}
             mode=0744
 
 - name: Recompile the postactivate hook for our virtualenv
