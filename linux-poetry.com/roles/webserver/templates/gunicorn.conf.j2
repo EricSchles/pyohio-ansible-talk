@@ -1,5 +1,5 @@
 [program:gunicorn]
-user = root                                                          
+user = {{ project_name }}                                                          
 autostart=true
 autorestart=true
 redirect_stderr = true                                            
