@@ -13,7 +13,7 @@ In this interactive tutorial we'll be using Ansible, the latest DevOps hotness, 
 
 2.) Install hostupdater and ansible
     
-    vagrant install vagrant-hostupdater
+    vagrant plugin install vagrant-hostsupdater
     pip install ansible
 
 4.) Prepare the vagrant vm
